@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.test.springboard.repository.IBoardMapper">
+
+	<resultMap id="BoardMap" type="com.test.springboard.entity.BoardEntity">
+		
+		<id property="boardNo" column="board_no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		
+		
+	</resultMap>
+	
+
+	<insert id="insert">
+		INSERT INTO mvc_board
+		(title, content)
+		VALUES (#{title}, #{content})
+	</insert>
+	
+	<select id="getBoardList" resultMap="BoardMap">
+		SELECT * 
+		FROM mvc_board 
+	</select>
+
+
+	<select id="detail" resultMap="BoardMap">
+		SELECT *
+		FROM mvc_board
+		WHERE board_no=#{boardNo}
+	</select>
+
+
+	<update id="update">
+		UPDATE mvc_board
+		SET title=#{title}, content=#{content}
+		WHERE board_no=#{boardNo}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM mvc_board
+		WHERE board_no=#{boardNo}
+	</delete>
+	
+
+	<select id="search" resultMap="BoardMap">
+		SELECT *
+		FROM mvc_board
+		WHERE writer LIKE CONCAT('%', #{keyword}, '%')
+	</select>
+
+
+
+
+</mapper>
