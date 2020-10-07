@@ -13,7 +13,7 @@
 
 
 >게시글 전체 조회
-+ [게시글 전체 조회 상세 소스코드(https://blog.naver.com/tkgksw/222109588265)
++ [게시글 전체 조회 상세 소스코드](https://blog.naver.com/tkgksw/222109588265)
 + controller -> Service -> Repository -> Mapper -> DB
 + url을 통해 /boards/list 요청을 보냄
 + Service의 목록 가져오는 메서드 실행
