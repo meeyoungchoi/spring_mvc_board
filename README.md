@@ -2,6 +2,7 @@
 ## 2020 10월 7일
 
 >게시글 추가
++  [게시글 추가 상세 소스코드](https://blog.naver.com/tkgksw/222109584223) 
 + DTO -> controller -> Entity -> Service -> Repository -> Mapper -> DB
 + new.jsp 에서 데이터를 입력받아서 DTO객체 생성
 + 컨트롤러에서 DTO 데이터를 가지고 Entity 객체 생성
@@ -9,7 +10,10 @@
 + Repository로 Entity 전달
 + Mapper에서 insert문 사용하여 db에 Entity 저장
 
+
+
 >게시글 전체 조회
++ [게시글 전체 조회 상세 소스코드(https://blog.naver.com/tkgksw/222109588265)
 + controller -> Service -> Repository -> Mapper -> DB
 + url을 통해 /boards/list 요청을 보냄
 + Service의 목록 가져오는 메서드 실행
