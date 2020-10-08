@@ -47,10 +47,19 @@
 ## 2020 10월 8일
 
 > 게시글 조회
++ /boards/${boardNo} -> controller -> service -> repository -> mapper -> DB
++ url로 넘어온 게시글 번호를 사용하여 데이터베이스에서 해당 게시글을 꺼내온다
 
 > 게시글 수정
++ 원본 게시글 보여주기
++ /boards/${boardNo}/edit -> controller -> service -> repository -> mapper -> db
++ 수정된 정보를 가지고 새로운 DTO 와 Entity객체를 만든다
++ mapper를 통해 수정된 Entity 객체를 update할때 이미 해당 id가 db에 있으면 객체의 값을 덮어쓰게 된다
 
 > 게시글 삭제
++ /boards/${boardNo}/delete -> controller -> service -> repository -> mapper -> db
++ url을 통해 넘어온 게시글 번호를 사용하여 db에서 해당 객체를 삭제한다
 
++ 
 
  

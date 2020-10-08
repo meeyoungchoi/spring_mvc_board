@@ -1,6 +1,7 @@
 package com.test.springboard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import com.test.springboard.entity.BoardEntity;
 import com.test.springboard.service.BoardService;
 
 import lombok.extern.slf4j.Slf4j;
+
 
 
 @Slf4j

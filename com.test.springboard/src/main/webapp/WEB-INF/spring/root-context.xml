@@ -24,6 +24,7 @@
       <property name="password" value="mysql" />
    </bean>
    
+   
    <!-- 히카리 데이터소스 빈 등록 -->
    <bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
       <constructor-arg ref="hikariConfig" />
