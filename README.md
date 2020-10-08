@@ -59,7 +59,6 @@
 > 게시글 삭제
 + /boards/${boardNo}/delete -> controller -> service -> repository -> mapper -> db
 + url을 통해 넘어온 게시글 번호를 사용하여 db에서 해당 객체를 삭제한다
-
-+ 
+ 
 
  
