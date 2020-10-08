@@ -16,7 +16,6 @@
 		<tr>
 			<th>#</th>
 			<th>제목</th>
-			<th>내용</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,9 +24,7 @@
 				<td>${board.boardNo}</td>
 				<td>
 					<a href="${path}/boards/${board.boardNo}">${board.title}</a>
-				
 				</td>
-				<td>${board.content}</td>
 			</tr>
 		</c:forEach>
 	</tbody>

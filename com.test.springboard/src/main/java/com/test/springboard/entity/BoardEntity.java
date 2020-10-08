@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+
+
 @Getter
 @Setter
 @Entity
@@ -19,6 +21,11 @@ public class BoardEntity {
 
 	private String title;
 	private String content;
+	
+
+	
+	
+	
 
 	public BoardEntity() {
 	}

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.test.springboard.entity.BoardEntity;
 
 @Repository
-public class BoardRepository {
+public class BoardRepository{
 
 	@Autowired
 	private IBoardMapper boardMapper;
@@ -21,4 +21,19 @@ public class BoardRepository {
 		return boardMapper.getBoardList();
 		
 	}
+	
+	public BoardEntity detail(int boardNo) {
+		return boardMapper.detail(boardNo);
+	}
+
+	public void update(BoardEntity board) {
+		boardMapper.update(board);
+		
+	}
+
+	public void remove(int boardNo) {
+		boardMapper.delete(boardNo);
+		
+	}
+	
 }

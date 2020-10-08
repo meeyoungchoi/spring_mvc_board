@@ -33,15 +33,14 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public BoardEntity detail(int boardNo) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardRepository.detail(boardNo);
 	}
 
 
 
 	@Override
 	public void update(BoardEntity board) {
-		// TODO Auto-generated method stub
+		boardRepository.update(board);
 		
 	}
 
@@ -49,7 +48,7 @@ public class BoardService implements IBoardService {
 
 	@Override
 	public void delete(int boardNo) {
-		// TODO Auto-generated method stub
+		boardRepository.remove(boardNo);
 		
 	}
 	
