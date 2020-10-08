@@ -67,12 +67,12 @@ public class BoardController {
 	}
 	
 	
-	@GetMapping("/boards/{boardNo}/update")
+	@GetMapping("/boards/{boardNo}/edit")
 	public String edit(@PathVariable int boardNo, Model model) {
 		BoardEntity board = boardService.detail(boardNo);
 		System.out.println("board: " + board.toString());	
 		model.addAttribute("board" , board);
-		return "/boards/update";
+		return "/boards/edit";
 	}
 	
 	@PostMapping("/boards/{boardNo}/update}")

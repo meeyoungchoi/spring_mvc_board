@@ -33,7 +33,7 @@
 
 </table>
 <div class="container">
-	<a href="${path}/boards/${board.boardNo}/update" class="btn btn-info">수정</a>
+	<a href="${path}/boards/${board.boardNo}/edit" class="btn btn-info">수정</a>
 	
 </div>
 
