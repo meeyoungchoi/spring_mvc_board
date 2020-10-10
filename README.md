@@ -79,4 +79,29 @@
 + index.jsp에서 글 제목을 선택하면 detail.jsp 페이지로 이동하는데 이때 service에서 increase()를 호출하여 해당 Entity의 조회수를 증가시킨다
 + 조회수가 증가된 Entity를 데이터베이스에 반영한다
 
+> 회원관리
+> 회원가입
++ user 테이블 생성
++ register.jsp -> DTO -> Entity -> controller -> service -> repository -> db
+
+> 회원정보 조회
++ /users/${userId} -> controller -> service -> repository -> db
+
+> 회원정보 수정
++ /users/${userId}/edit -> controller -> service -> repository -> db -> edit.jsp
++ db에 저장되있던 회원 Entity를 꺼내온다
++ edit.jsp에서 회원정보를 수정한다
++ DTO -> Entity -> service -> repository -> db
++ 수정된 값을 사용하여 새로운 DTO 객체와 Entity 객체가 만들어지고 db에 저장된다
+
+> 회원정보 삭제(회원탈퇴)
++ /users/${userId}/delete -> controller -> service -> repository -> db
++ userId를 바탕으로 db에서 해당 아이디를 가지는 Entity 객체를 삭제한다
+
+
+
+
+
+
+
  

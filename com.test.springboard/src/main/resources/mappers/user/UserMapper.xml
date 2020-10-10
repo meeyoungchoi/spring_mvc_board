@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    
+<mapper namespace="com.test.springboard.repository.IUserMapper">
+
+	<resultMap id="UserMap" type="com.test.springboard.entity.UserEntity" >
+		
+		<id property="userNo" column="user_no"/>
+		<result property="userName" column="user_name"/>
+		<result property="userId" column="user_id"/>
+		<result property="userPw" column="user_pw"/>	
+	</resultMap>
+	
+	
+	
+	<insert id="insert">
+		insert into mvc_user
+		(user_name, user_id, user_pw)
+		values(#{userName}, #{userId}, #{userPw});
+	</insert>
+	
+	<select id="getUserList" resultMap="UserMap">
+		select *
+		from mvc_user
+	</select>
+	
+	<select id="detail" resultMap="UserMap">
+		select * 
+		from mvc_user
+		where user_id = #{userId}
+	</select>
+	
+	<update id="update">
+		update mvc_user
+		set user_pw = #{userPw}
+		where user_id = #{userId}
+	</update>
+	
+	<delete id="delete">
+		delete from mvc_user
+		where user_id = #{userId}
+	</delete>
+	
+</mapper>
+
+
+
+
+
