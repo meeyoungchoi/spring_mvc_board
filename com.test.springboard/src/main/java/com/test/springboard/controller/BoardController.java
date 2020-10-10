@@ -52,6 +52,7 @@ public class BoardController {
 		System.out.println("entity: " + entity.toString());
 		
 		boardService.insert(entity);
+		System.out.println("insert후: " + entity.toString());
 		
 		return "redirect:/boards/index";
 	}
@@ -62,6 +63,7 @@ public class BoardController {
 		
 		BoardEntity entity = boardService.detail(boardNo);
 		System.out.println("entity: " + entity.toString());
+		
 		model.addAttribute("board", entity);
 		return "/boards/show";
 	}
@@ -69,19 +71,17 @@ public class BoardController {
 	
 	@GetMapping("/boards/{boardNo}/edit")
 	public String edit(@PathVariable int boardNo, Model model) {
-		BoardEntity board = boardService.detail(boardNo);
-		System.out.println("board: " + board.toString());	
+		BoardEntity board = boardService.findById(boardNo);
+		System.out.println("edit findById: " + board.toString());	
 		model.addAttribute("board" , board);
 		return "/boards/edit";
 	}
 	
 	@PostMapping("/boards/{boardNo}/update}")
-	public String update(BoardForm boardForm) {
+	public String update(BoardForm boardForm, @PathVariable int boardNo) {
 		System.out.println("boardForm: " + boardForm.toString());
-		BoardEntity board = boardForm.toEntity();
-		System.out.println("update: " + board.toString());
-		boardService.update(board);
-		return "redirect:/boards/" + board.getBoardNo();
+		boardService.update(boardForm.toEntity(), boardNo);
+		return "redirect:/boards/" + boardNo;
 	}
 	
 	@GetMapping("/boards/{boardNo}/delete")

@@ -11,7 +11,7 @@ public interface IBoardService {
 
 	BoardEntity detail(int boardNo);
 
-	void update(BoardEntity board);
+	void update(BoardEntity board, int boardNo);
 
 	void delete(int boardNo);
 

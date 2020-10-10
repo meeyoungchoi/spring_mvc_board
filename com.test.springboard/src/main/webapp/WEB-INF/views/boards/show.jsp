@@ -24,6 +24,22 @@
             <th>내용</th>
             <td>${board.content}</td>
         </tr>
+        <tr>
+            <th>조회수</th>
+            <td>${board.readCount}</td>
+        </tr>
+        <tr>
+            <th>작성일</th>
+            <td>
+            	<fmt:formatDate value="${board.createdDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/>
+            </td>
+        </tr>
+        <tr>
+            <th>최종수정일</th>
+            <td>
+            	<fmt:formatDate value="${board.updatedDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/>
+            </td>
+        </tr>
 
 	
  </tbody>

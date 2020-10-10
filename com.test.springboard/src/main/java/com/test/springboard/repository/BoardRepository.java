@@ -35,5 +35,10 @@ public class BoardRepository{
 		boardMapper.delete(boardNo);
 		
 	}
+
+	public BoardEntity findById(int boardNo) {
+		return boardMapper.detail(boardNo);
+		
+	}
 	
 }

@@ -7,17 +7,20 @@
 	<resultMap id="BoardMap" type="com.test.springboard.entity.BoardEntity">
 		
 		<id property="boardNo" column="board_no" />
+		<result property="writer" column="writer"/>
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		
+		<result property="createdDate" column="createdDate"/>
+		<result property="updatedDate" column="updatedDate"/>
+		<result property="readCount" column="readCount"/>
 		
 	</resultMap>
 	
 
 	<insert id="insert">
 		INSERT INTO mvc_board
-		(title, content)
-		VALUES (#{title}, #{content})
+		(writer, title, content,readCount)
+		VALUES (#{writer}, #{title}, #{content}, #{readCount})
 	</insert>
 	
 	<select id="getBoardList" resultMap="BoardMap">
@@ -32,10 +35,10 @@
 		WHERE board_no=#{boardNo}
 	</select>
 
-
+ 
 	<update id="update">
 		UPDATE mvc_board
-		SET title=#{title}, content=#{content}
+		SET title=#{title}, content=#{content}, readCount=#{readCount}
 		WHERE board_no=#{boardNo}
 	</update>
 	

@@ -25,10 +25,13 @@ public class BoardMapperTest {
 	@Test
 	public void insertTest() {
 		
-		for(int i=1; i<=320; i++) {
+		for(int i=1; i<= 20; i++) {
 			BoardEntity board = new BoardEntity();
+			board.setWriter("hong" + i);
 			board.setTitle("제목" + i);
 			board.setContent("내용" + i);
+			board.setCreatedDate(null);
+			board.setReadCount(0);
 			mapper.insert(board);
 		}
 		System.out.println("insert완료");
@@ -48,8 +51,9 @@ public class BoardMapperTest {
 	public void updateTest() {
 		BoardEntity board = new BoardEntity();
 		board.setBoardNo((long) 2);
-		board.setTitle("수정");
-		board.setContent("내용수정");
+		board.setTitle("수정이당2");
+		board.setContent("내용수정2");
+
 		mapper.update(board);
 		System.out.println("update: " + mapper.detail(2));
 		
@@ -57,8 +61,8 @@ public class BoardMapperTest {
 	
 	@Test
 	public void deleteTest() {
-		mapper.delete(6);
-		BoardEntity entity = mapper.detail(6);
+		mapper.delete(4);
+		BoardEntity entity = mapper.detail(4);
 		if (entity == null) {
 			System.out.println("삭제완료");
 		} else {
@@ -69,7 +73,7 @@ public class BoardMapperTest {
 	
 	@Test
 	public void show() {
-		BoardEntity entity = mapper.detail(3);
+		BoardEntity entity = mapper.detail(2);
 		if (entity == null) {
 			System.out.println("게시글이 없다");
 		} else {

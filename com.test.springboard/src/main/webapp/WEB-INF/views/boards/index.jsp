@@ -16,6 +16,7 @@
 		<tr>
 			<th>#</th>
 			<th>제목</th>
+			<th>작성일</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,6 +25,9 @@
 				<td>${board.boardNo}</td>
 				<td>
 					<a href="${path}/boards/${board.boardNo}">${board.title}</a>
+				</td>
+				<td>
+					<fmt:formatDate value="${board.createdDate}" pattern="yyyy년 MM월 dd일 a hh:mm"/>
 				</td>
 			</tr>
 		</c:forEach>

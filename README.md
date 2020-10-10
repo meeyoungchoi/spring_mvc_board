@@ -64,4 +64,19 @@
 + url을 통해 넘어온 게시글 번호를 사용하여 db에서 해당 객체를 삭제한다
  
 
+## 2020 10월 10일
+> 게시글 작성시 작성자, 작성일, 수정일, 조회수 추가
++ 데이터베이스 테이블 구조 변경
+
+> 작성일 표시
++ java.util.Date를 Entity 클래스에 import
++ mapper에서 insert 쿼리가 실행되고 current_timestamp() 가 호출될때 데이터베이스에 Entity 생성시각이 기록된다
+
+> 수정일 표시
++ mapper에서 update 쿼리가 실행되고 current_timestamp on update current_timestamp() 가 호출될때 데이터베이스에 Entity 수정시각이 기록된다
+
+> 조회수 증가
++ index.jsp에서 글 제목을 선택하면 detail.jsp 페이지로 이동하는데 이때 service에서 increase()를 호출하여 해당 Entity의 조회수를 증가시킨다
++ 조회수가 증가된 Entity를 데이터베이스에 반영한다
+
  
