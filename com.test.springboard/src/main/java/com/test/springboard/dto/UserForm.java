@@ -25,6 +25,16 @@ public class UserForm {
                 .userPw(userPw)
                 .build();
 	}
+	
+//	
+//	public UserForm(String userId, String userPw) {
+//		this.userId = userId;
+//		this.userPw = userPw;
+//	}
+	
+	//질문 DTO 객체가 만들어질때도 기본생성자가 필요한가??
+	public UserForm() {}
+	
 		
 
 }

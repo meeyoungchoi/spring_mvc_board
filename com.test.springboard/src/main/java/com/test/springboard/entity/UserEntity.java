@@ -53,6 +53,24 @@ public class UserEntity {
 		this.userPw = user.getUserPw();
 		
 	}
+
+
+
+
+	public boolean checkIdPw(UserEntity registeredUser) {
+		boolean status = false;
+		if (this.getUserId().equals(registeredUser.getUserId()) && this.getUserPw().equals(registeredUser.getUserPw())) {
+			System.out.println("로그인 성공");
+			status = true;
+			System.out.println("status: " + status);
+		} else {
+			System.out.println("로그인 실패");
+			status = false;
+			System.out.println("status: "  + status);
+		}	
+	
+		return status;
+	}
 	
 	
 	
