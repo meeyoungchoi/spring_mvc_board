@@ -25,9 +25,11 @@ public class UserController {
 	private UserService service;
 
 	@GetMapping("/users")
-	public String index(Model model) {
+	public String index(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("loginSuccess");
 		List<UserEntity> users = service.getUserList();
 		model.addAttribute("users", users);
+		model.addAttribute("userId", userId);
 		return "users/index";
 	}
 
@@ -51,6 +53,10 @@ public class UserController {
 	public String detail(@PathVariable String userId, Model model) {
 		System.out.println("userId: " + userId);
 		UserEntity user = service.detail(userId);
+		if (user == null) {
+			return "users/login";
+		}
+		
 		System.out.println("user: " + user.toString());
 		model.addAttribute("user", user);
 		return "users/show";
@@ -106,10 +112,22 @@ public class UserController {
 		} else {
 			System.out.println("로그인 결과 loginInfo: " + loginInfo.toString());
 			session.setAttribute("loginSuccess", loginInfo.getUserId());
-			return "users/loginSuccess";
+			return "users/boardList";
 
 		}
 
+	}
+	
+	@GetMapping("/users/myPage")
+	public String myPage(HttpSession session) {
+		String userId  = (String) session.getAttribute("loginSuccess");
+		if (userId != null) {
+			System.out.println("/users/myPage: " + userId);
+			return "users/myPage";
+		} 
+		
+		
+		return "redirect:/users/login";
 	}
 	
 	@GetMapping("/users/logout")
@@ -125,6 +143,23 @@ public class UserController {
 		String userId = (String) session.getAttribute("loginSuccess");
 		model.addAttribute("userId", userId);
 		return "redirect:/users/" + userId + "/delete";
+	}
+	
+	@GetMapping("/users/write")
+	public String write(HttpSession session, Model model) {
+		String userId  = (String)session.getAttribute("loginSuccess");
+		if (userId != null) {
+			System.out.println("/users/write: " + userId);
+			model.addAttribute("userId", userId);
+			return "users/write";
+		}
+		
+		return "redirect:/users/login";
+	}
+	
+	@GetMapping("/users/boardList")
+	public String userIndex() {
+		return "users/boardList";
 	}
 	
 	

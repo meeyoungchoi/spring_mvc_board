@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="path" value="<%=request.getContextPath()%>" />
+<% String userId  = (String)session.getAttribute("loginSuccess"); %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,9 +25,24 @@
         <a class="nav-link" href="<c:url value='/boards/index'/>">자유게시판</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">회원제게시판</a>
+        <a class="nav-link" href="${path}/users">회원관리 게시판</a>
       </li>
-     </ul> 
+      <li class="nav-item active">
+      	<a class="nav-link" href="${path}/users/boardList">회원전용 게시판</a>
+      </li>
+      <li class="nav-item active">
+      	<a class="nav-link" href="${path}/users/myPage">마이페이지</a>
+      </li>
+     </ul>
+     
+      <% if (userId != null) {  %> 
+      <a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/logout">로그아웃</a>
+      <h1 class="text-success"><%=userId %>님 로그인중</h1>
+      <%} else  { %>
+     	<a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/register">회원가입</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/login">로그인</a>	 
+      <% } %>	
+      
   </div>
 </nav>
 

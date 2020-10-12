@@ -3,13 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="<%=request.getContextPath()%>" />
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<% String userId = (String)session.getAttribute("loginSuccess"); %>
+
 
 <jsp:include page="../layouts/header.jsp" />
 <div class="jumbotron">
-	<h1>회원관리게시판 입니다.</h1>
+	<h1>회원전용 게시판 입니다.</h1>
 	<hr>
-	<p>가입된 회원을 관리합니다</p>
-	
+	<% if (userId != null) { %>
+	<a href="${path}/users/write">글쓰기</a>
+	<% } else {  %>
+	<h1 class="text-danger">로그인을 하셔야 글을작성하실수 있습니다.</h1>
+	<% } %>
 </div>
 
 
@@ -17,19 +22,15 @@
 	<thead>
 		<tr>
 			<th>#</th>
-			<th>아이디</th>
+			<th>작성자</th>
+			<th>제목</th>
 		</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="user" items="${users}">
-			<tr>
-				<td>${user.userNo}</td>
-				<td><a href="${path}/users/${user.userId}">${user.userId}</a></td>
-			</tr>
-		</c:forEach>
+		<tr>
+			<td>예)</td>
+			<td>user1</td>
+			<td>회원이 로그인후 보게될 회원전용 게시글목록</td>
+		</tr>
 	</tbody>
 </table>
-
-<jsp:include page="../layouts/footer.jsp" />
-
-

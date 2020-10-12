@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="<%=request.getContextPath() %>"/>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<jsp:include page="../layouts/header2.jsp" />
+<jsp:include page="../layouts/header.jsp" />
 <div class="jumbotron">
 	<h1>로그인 페이지</h1>
 </div>
