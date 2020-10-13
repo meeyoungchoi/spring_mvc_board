@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.springboard.dto.UserForm;
+import com.test.springboard.entity.MemberArticleEntity;
 import com.test.springboard.entity.UserEntity;
+import com.test.springboard.service.MemberArticleService;
 import com.test.springboard.service.UserService;
 
 @Controller
@@ -23,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private MemberArticleService memberArticleService;
 
 	@GetMapping("/users")
 	public String index(HttpSession session, Model model) {
@@ -158,7 +163,12 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/boardList")
-	public String userIndex() {
+	public String userIndex(Model model) {
+		
+		List<MemberArticleEntity> memArticles = memberArticleService.getMemberArticles();
+		System.out.println(memArticles.toString());
+		model.addAttribute("memberArticles", memArticles);
+		
 		return "users/boardList";
 	}
 	

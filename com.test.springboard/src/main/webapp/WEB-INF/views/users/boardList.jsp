@@ -3,18 +3,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="<%=request.getContextPath()%>" />
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<% String userId = (String)session.getAttribute("loginSuccess"); %>
+<%
+	String userId = (String) session.getAttribute("loginSuccess");
+%>
 
 
 <jsp:include page="../layouts/header.jsp" />
 <div class="jumbotron">
 	<h1>회원전용 게시판 입니다.</h1>
 	<hr>
-	<% if (userId != null) { %>
+	<%
+		if (userId != null) {
+	%>
 	<a href="${path}/users/write">글쓰기</a>
-	<% } else {  %>
+	<%
+		} else {
+	%>
 	<h1 class="text-danger">로그인을 하셔야 글을작성하실수 있습니다.</h1>
-	<% } %>
+	<%
+		}
+	%>
 </div>
 
 
@@ -27,10 +35,15 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>예)</td>
-			<td>user1</td>
-			<td>회원이 로그인후 보게될 회원전용 게시글목록</td>
-		</tr>
+		<c:forEach var="memArticles" items="${memberArticles}">
+
+			<tr>
+				<td>${memArticles.articleNo}</td>
+				<td>${memArticles.userId}</td>
+				<td>${memArticles.title}</td>
+			</tr>
+
+		</c:forEach>
 	</tbody>
+
 </table>

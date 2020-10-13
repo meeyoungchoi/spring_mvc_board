@@ -15,7 +15,7 @@
 		<%  response.sendRedirect("login");} %>
 	</div>
 	
-	<form method="" action="" class="container">
+	<form method="post" action="${path}/users/write" class="container">
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">작성자</label>
 			<div class="col-sm-10">
@@ -37,12 +37,16 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">비밀번호</label>
 			<div class="col-sm-10">
-				<input type="text" name="writerPw" placeholder="글 보안을 위해 회원님의 비밀번호를 입력하세요"  class="form-control">
+				<input type="text" name="userPw" placeholder="글 보안을 위해 회원님의 비밀번호를 입력하세요"  class="form-control">
 			</div>
 		</div>
 		<button type="submit" class="btn btn-info btn-block">저장</button>
+		
 	
 	</form>	
+	
+
+
 		
 	
 
