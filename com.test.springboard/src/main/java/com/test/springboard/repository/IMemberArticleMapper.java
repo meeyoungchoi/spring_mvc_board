@@ -9,5 +9,7 @@ public interface IMemberArticleMapper {
 	void insert(MemberArticleEntity memberarticle);
 	
 	List<MemberArticleEntity> getMemberArticles();
+	
+	MemberArticleEntity findById(int articleNo);
 
 }

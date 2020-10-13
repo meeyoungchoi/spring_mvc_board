@@ -29,6 +29,12 @@
 		FROM member_articles
 	</select>
 	
+	<select id="findById" resultMap="MemberArticleMap">
+		SELECT * 
+		FROM member_articles 
+		where  article_no = #{articleNo}
+	</select>
+	
 	
     
     

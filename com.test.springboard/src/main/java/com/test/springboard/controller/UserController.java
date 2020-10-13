@@ -2,6 +2,7 @@ package com.test.springboard.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -117,7 +118,7 @@ public class UserController {
 		} else {
 			System.out.println("로그인 결과 loginInfo: " + loginInfo.toString());
 			session.setAttribute("loginSuccess", loginInfo.getUserId());
-			return "users/boardList";
+			return "users/myPage"; //"users/boardList";
 
 		}
 
@@ -163,12 +164,19 @@ public class UserController {
 	}
 	
 	@GetMapping("/users/boardList")
-	public String userIndex(Model model) {
+	public String userIndex(Model model, HttpSession session) {
 		
-		List<MemberArticleEntity> memArticles = memberArticleService.getMemberArticles();
-		System.out.println(memArticles.toString());
-		model.addAttribute("memberArticles", memArticles);
+		 String userId = (String) session.getAttribute("loginSuccess");
 		
+		 
+		 if (userId != null || userId == null) {
+
+				List<MemberArticleEntity> memArticles = memberArticleService.getMemberArticles();
+				System.out.println(memArticles.toString());
+				model.addAttribute("memberArticles", memArticles);
+				
+		 }
+		 
 		return "users/boardList";
 	}
 	

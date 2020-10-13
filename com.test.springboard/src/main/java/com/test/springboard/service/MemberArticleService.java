@@ -50,5 +50,10 @@ public class MemberArticleService implements IMemberArticleService{
 	public List<MemberArticleEntity> getMemberArticles() {
 		return memberArticleRepository.getMemberArticles();
 	}
+
+	public MemberArticleEntity detail(int articleNo) {
+		return memberArticleRepository.findById(articleNo);
+		
+	}
 	
 }

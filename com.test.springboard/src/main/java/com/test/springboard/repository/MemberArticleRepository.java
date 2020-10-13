@@ -23,6 +23,11 @@ public class MemberArticleRepository {
 	public List<MemberArticleEntity> getMemberArticles() {
 		return meberArticleMapper.getMemberArticles();
 	}
+
+
+	public MemberArticleEntity findById(int articleNo) {
+		return meberArticleMapper.findById(articleNo);
+	}
 	
 	
 

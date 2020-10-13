@@ -40,7 +40,9 @@
 			<tr>
 				<td>${memArticles.articleNo}</td>
 				<td>${memArticles.userId}</td>
-				<td>${memArticles.title}</td>
+				<td>
+					<a href="${path}/users/${memArticles.articleNo}/detail">${memArticles.title}</a>
+				</td>
 			</tr>
 
 		</c:forEach>
