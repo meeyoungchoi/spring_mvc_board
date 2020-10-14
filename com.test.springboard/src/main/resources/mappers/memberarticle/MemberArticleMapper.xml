@@ -36,7 +36,11 @@
 	</select>
 	
 	
-    
+    <update id="update">
+   		UPDATE member_articles
+		SET userId=#{userId}, title=#{title}, content=#{content} , userPw=#{userPw} , readCnt=#{readCnt} 
+		WHERE article_no=#{articleNo}
+    </update>
     
     
     </mapper>

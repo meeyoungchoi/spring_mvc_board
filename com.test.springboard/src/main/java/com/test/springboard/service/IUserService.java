@@ -1,6 +1,6 @@
 package com.test.springboard.service;
 
-import java.util.List;
+
 
 import com.test.springboard.entity.UserEntity;
 
@@ -9,7 +9,7 @@ public interface IUserService {
 	void insert(UserEntity user);
 	
 	
-	List<UserEntity> getUserList();
+	Iterable<UserEntity> getUserList();
 	
 	
 	UserEntity detail(String userId);

@@ -1,5 +1,7 @@
 package com.test.springboard.repository;
 
+
+
 import java.util.List;
 
 import com.test.springboard.entity.BoardEntity;

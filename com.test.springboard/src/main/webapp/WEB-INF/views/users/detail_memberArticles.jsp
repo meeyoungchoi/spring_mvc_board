@@ -5,6 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../layouts/header.jsp" />
 
+<%
+	String loginId = (String) session.getAttribute("userId");
+%>
 
 
 <div class="jumbotron">
@@ -12,36 +15,54 @@
 </div>
 
 <c:if test="${memberArticle ne null }">
-<table class="table text-center table-hover">
-	<tbody>
-		<tr>
-			<th>#</th>
-			<td>${memberArticle.articleNo}</td>
-		</tr>
-		<tr>
-			<th>아이디</th>
-			<td>${memberArticle.userId}</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${memberArticle.title}</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>${memberArticle.content}</td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td>${memberArticle.readCnt}</td>
-		</tr>
-		<tr>
-			<th>작성일</th>
-			<td>${memberArticle.writeDate}</td>
-		</tr>
-		
-		
+	
+	
 
-	</tbody>
-</table>
+	<table class="table text-center table-hover">
+		<tbody>
+			<tr>
+				<th>#</th>
+				<td>${memberArticle.articleNo}</td>
+			</tr>
+			<tr>
+				<th>아이디</th>
+				<td>${memberArticle.userId}</td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<td>${memberArticle.title}</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>${memberArticle.content}</td>
+			</tr>
+			<tr>
+				<th>조회수</th>
+				<td>${memberArticle.readCnt}</td>
+			</tr>
+			<tr>
+				<th>작성일</th>
+				<td>${memberArticle.writeDate}</td>
+			</tr>
+			<tr>
+				<th>최종수정일</th>
+				<td>${memberArticle.updatedDate}</td>
+			</tr>
+
+
+		</tbody>
+	</table>
+
+<a class="btn btn-info btn-block"
+				href="${path}/users/${articleNo}/update">수정</a>
+
+
+
+
+
+
+
+
+
 
 </c:if>

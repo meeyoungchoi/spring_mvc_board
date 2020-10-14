@@ -47,6 +47,12 @@ public class MemberArticleEntity {
 				+ ", readCnt=" + readCnt + "]";
 	}
 
+
+	public void increase() {
+		this.readCnt += 1;
+		
+	}
+
 	
 	
 	

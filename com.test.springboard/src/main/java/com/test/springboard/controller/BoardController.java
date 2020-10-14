@@ -1,5 +1,7 @@
 package com.test.springboard.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -32,7 +34,7 @@ public class BoardController {
 	
 	@GetMapping("/boards/index")
 	public String index(Model model) {
-		Iterable<BoardEntity> boards = boardService.getBoardList();
+		List<BoardEntity> boards = boardService.getBoardList();
 		model.addAttribute("boards", boards);
 		return "boards/index";
 	}

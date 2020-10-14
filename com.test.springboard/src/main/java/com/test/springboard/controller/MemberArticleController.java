@@ -1,5 +1,7 @@
 package com.test.springboard.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,15 +43,30 @@ public class MemberArticleController {
 	}
 	
 	@GetMapping("/users/{articleNo}/detail")
-	public String detail(@PathVariable int articleNo, Model model) {
+	public String detail(@PathVariable int articleNo, Model model, HttpSession session) {
 		System.out.println("Get: /users/{articleNo}/detail " + articleNo);
 		MemberArticleEntity memberArticle = memberArticleService.detail(articleNo);
 		System.out.println("detail() : " + memberArticle.toString());
+		
+		String userId = (String) session.getAttribute("loginSuccess");
+		
+		if (userId != null) {
+			model.addAttribute("userId", userId);
+		}
+		
+		
 		model.addAttribute("memberArticle", memberArticle);
 		return "users/detail_memberArticles";
 	}
 	
-	
+	@GetMapping("/users/{articleNo}/update")
+	public String update(@PathVariable int articleNo, Model model) {
+		System.out.println("update: " + articleNo);
+		MemberArticleEntity memberArticle = memberArticleService.detail(articleNo);
+		System.out.println("memberArticle: " + memberArticle.toString());
+		model.addAttribute("memberArticle", memberArticle);
+		return "users/edit_memberArticles";
+	}
 	
 	
 }

@@ -1,5 +1,7 @@
 package com.test.springboard.service;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +38,10 @@ public class MemberArticleService implements IMemberArticleService{
 			status = true;
 			System.out.println("status: " + status);
 			return status;
-		}  else 
+		}  else if (memberArticle.getUserPw().equals(null)) {
 			System.out.println("작성자의 아이디와 비밀번호가 올바르지 않습니다.");
 			status = false;
-		
+		}
 		
 		return status;
 		
@@ -52,7 +54,15 @@ public class MemberArticleService implements IMemberArticleService{
 	}
 
 	public MemberArticleEntity detail(int articleNo) {
-		return memberArticleRepository.findById(articleNo);
+		MemberArticleEntity entity = memberArticleRepository.findById(articleNo);
+		
+		if (entity != null) {
+			entity.increase();
+			System.out.println("조회수 증가후: " + entity.toString());
+			memberArticleRepository.update(entity);
+		}
+		
+		return entity;
 		
 	}
 	

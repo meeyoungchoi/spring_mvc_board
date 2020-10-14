@@ -1,5 +1,7 @@
 package com.test.springboard.repository;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,12 @@ public class MemberArticleRepository {
 
 	public MemberArticleEntity findById(int articleNo) {
 		return meberArticleMapper.findById(articleNo);
+	}
+
+
+	public void update(MemberArticleEntity entity) {
+		meberArticleMapper.update(entity);
+		
 	}
 	
 	
