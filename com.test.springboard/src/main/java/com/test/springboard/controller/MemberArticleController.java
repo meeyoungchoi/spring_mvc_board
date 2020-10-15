@@ -11,15 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.test.springboard.dto.MemberArticleForm;
 import com.test.springboard.entity.MemberArticleEntity;
-import com.test.springboard.entity.UserEntity;
+
 import com.test.springboard.service.MemberArticleService;
 import com.test.springboard.service.UserService;
 
 @Controller
 public class MemberArticleController {
 	
-	@Autowired
-	private UserService userService;
+	
 	
 	@Autowired
 	private MemberArticleService memberArticleService;
@@ -62,11 +61,24 @@ public class MemberArticleController {
 	@GetMapping("/users/{articleNo}/update")
 	public String update(@PathVariable int articleNo, Model model) {
 		System.out.println("update: " + articleNo);
-		MemberArticleEntity memberArticle = memberArticleService.detail(articleNo);
+		MemberArticleEntity memberArticle = memberArticleService.findById(articleNo);
 		System.out.println("memberArticle: " + memberArticle.toString());
 		model.addAttribute("memberArticle", memberArticle);
 		return "users/edit_memberArticles";
 	}
 	
+	@PostMapping("/users/{articleNo}/updatememberarticle")
+	public String update(@PathVariable int articleNo, MemberArticleForm memberArticleForm) {
+		System.out.println("post  /users/{articleNo}/update: memberArticleForm " + memberArticleForm.toString());
+		System.out.println("articleNo: " + articleNo);
+		
+		boolean status = memberArticleService.update(memberArticleForm.toEntity(), articleNo);
+		if (status == true) {
+			return "redirect:/users/" + articleNo + "/detail";
+		} else {
+			return "users/wrong_pw";
+		}
+		
+	}
 	
 }

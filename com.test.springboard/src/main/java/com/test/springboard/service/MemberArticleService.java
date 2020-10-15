@@ -65,5 +65,24 @@ public class MemberArticleService implements IMemberArticleService{
 		return entity;
 		
 	}
+
+	public boolean update(MemberArticleEntity memberArticle, int articleNo) {
+		boolean status = false;
+		MemberArticleEntity before = memberArticleRepository.findById(articleNo);
+		if (memberArticle.getUserPw().equals(before.getUserPw())) {
+			before.rewrite(memberArticle.getTitle(), memberArticle.getContent());
+			System.out.println("update before: " + before.toString());
+			memberArticleRepository.update(before);
+			status = true;
+		} else {
+			status = false;
+		}
+		
+		return status;
+	}
+
+	public MemberArticleEntity findById(int articleNo) {
+		return memberArticleRepository.findById(articleNo);
+	}
 	
 }

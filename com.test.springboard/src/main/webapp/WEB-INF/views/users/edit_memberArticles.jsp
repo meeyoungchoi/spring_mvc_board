@@ -10,7 +10,7 @@
 </div>
     
 <c:if test="${memberArticle ne null }">
-	<form>
+	<form method="post" action="${path}/users/${articleNo}/updatememberarticle">
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">글번호</label>
 			<div class="col-sm-10">
