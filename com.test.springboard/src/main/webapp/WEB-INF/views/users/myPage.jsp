@@ -22,7 +22,11 @@
 	<a href="${path}/users/logout" class="btn btn-warning btn-block">로그아웃</a>
 	<a href="${path}/users/remove" class="btn btn-danger btn-block">회원탈퇴</a>
 	<a>회원정보 조회</a>
-	<% } %>
+	<% } else { %>
+		<a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/register">회원가입</a>
+      <a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/login">로그인</a>
+	
+	<%} %>
 </div>
 
 

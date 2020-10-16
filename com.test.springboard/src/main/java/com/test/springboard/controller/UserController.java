@@ -89,14 +89,16 @@ public class UserController {
 		System.out.println("userForm: " + userForm.toString());
 
 		service.update(userForm.toEntity(), userId);
+		
 		return "redirect:/users/" + userId;
 	}
 
 	@GetMapping("/users/{userId}/delete")
-	public String delete(@PathVariable String userId) {
+	public String delete(@PathVariable String userId, HttpSession session) {
 		System.out.println("/users/{userId}/delete");
 		System.out.println("userId: " + userId);
 		service.delete(userId);
+		session.invalidate();
 		return "redirect:/users";
 	}
 
@@ -152,6 +154,7 @@ public class UserController {
 	public String remove(HttpSession session, Model model) {
 		String userId = (String) session.getAttribute("loginSuccess");
 		model.addAttribute("userId", userId);
+		session.invalidate();
 		return "redirect:/users/" + userId + "/delete";
 	}
 	

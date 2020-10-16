@@ -42,5 +42,11 @@
 		WHERE article_no=#{articleNo}
     </update>
     
+    <delete id="delete">
+		delete FROM member_articles 
+		where  article_no = #{articleNo}
+	</delete>
+	
+    
     
     </mapper>

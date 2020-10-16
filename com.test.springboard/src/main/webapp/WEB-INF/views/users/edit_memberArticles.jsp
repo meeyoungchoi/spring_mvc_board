@@ -56,8 +56,9 @@
 		
 		<button type="submit" class="btn btn-info btn-block">저장</button>
 				
-	
+			
 	</form>
+
 
 
 

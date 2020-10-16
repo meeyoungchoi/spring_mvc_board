@@ -5,9 +5,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../layouts/header.jsp" />
 
+
+
+
+
+
 <%
 	String loginId = (String) session.getAttribute("userId");
 %>
+
+
 
 
 <div class="jumbotron">
@@ -58,7 +65,8 @@
 
 
 
-
+<a  class="btn btn-danger btn-block" href="${path}/users/delete/${articleNo}" >삭제</a>
+		
 
 
 

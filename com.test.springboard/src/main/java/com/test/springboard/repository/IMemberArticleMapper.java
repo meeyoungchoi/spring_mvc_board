@@ -15,4 +15,6 @@ public interface IMemberArticleMapper {
 
 	void update(MemberArticleEntity entity);
 
+	void delete(int articleNo);
+
 }

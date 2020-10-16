@@ -36,6 +36,12 @@ public class MemberArticleRepository {
 		meberArticleMapper.update(entity);
 		
 	}
+
+
+	public void delete(int articleNo) {
+		meberArticleMapper.delete(articleNo);
+		
+	}
 	
 	
 

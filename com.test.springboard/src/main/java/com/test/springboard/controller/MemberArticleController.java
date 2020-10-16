@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.test.springboard.dto.MemberArticleForm;
 import com.test.springboard.entity.MemberArticleEntity;
@@ -18,27 +19,24 @@ import com.test.springboard.service.UserService;
 @Controller
 public class MemberArticleController {
 	
-	
-	
+
 	@Autowired
 	private MemberArticleService memberArticleService;
 	
-	
-	
-	@PostMapping("/users/write")
-	public String insert(MemberArticleForm memberArticle) {
-		System.out.println("memberArticeDTO: " + memberArticle.toString());
 		
+	@PostMapping("/users/write")
+	public String insert(MemberArticleForm memberArticle, HttpSession session) {
+		System.out.println("memberArticeDTO: " + memberArticle.toString());
+		String loginId = (String) session.getAttribute("loginSuccess");
 		//service가 비즈니스 로직을 담당한다
-		boolean status = memberArticleService.insert(memberArticle.toEntity());
+		boolean status = memberArticleService.insert(memberArticle.toEntity(), loginId);
 		
 		if (status == true) {
 			return "redirect:/users/boardList";
+		} else {
+			return "users/loginFail";
 		}
-		
 
-		System.out.println("post: /users/write");
-		return "";
 	}
 	
 	@GetMapping("/users/{articleNo}/detail")
@@ -68,11 +66,12 @@ public class MemberArticleController {
 	}
 	
 	@PostMapping("/users/{articleNo}/updatememberarticle")
-	public String update(@PathVariable int articleNo, MemberArticleForm memberArticleForm) {
+	public String update(@PathVariable int articleNo, MemberArticleForm memberArticleForm ,  HttpSession session) {
 		System.out.println("post  /users/{articleNo}/update: memberArticleForm " + memberArticleForm.toString());
 		System.out.println("articleNo: " + articleNo);
+		String loginId  = (String) session.getAttribute("loginSuccess");
 		
-		boolean status = memberArticleService.update(memberArticleForm.toEntity(), articleNo);
+		boolean status = memberArticleService.update(memberArticleForm.toEntity(), articleNo, loginId);
 		if (status == true) {
 			return "redirect:/users/" + articleNo + "/detail";
 		} else {
@@ -80,5 +79,30 @@ public class MemberArticleController {
 		}
 		
 	}
+	
+	
+	@GetMapping("/users/delete/{articleNo}")
+	public String delete(@PathVariable int articleNo, Model model) {
+		model.addAttribute("articleNo", articleNo);
+		return "users/delete";
+	}
+	
+	@PostMapping("/users/{articleNo}/remove")
+	public String remove(@PathVariable int articleNo, @RequestParam(value="userPw") String userPw, HttpSession session) {
+		System.out.println("/users/${articleNo}/remove : POST " );
+		System.out.println("articleNo: " + articleNo);
+		System.out.println("userPw: " + userPw);
+		
+		String userId =  (String) session.getAttribute("loginSuccess");
+		
+		boolean status = memberArticleService.remove(articleNo, userPw, userId);
+		
+		if (status == true) {
+			return "redirect:/users/boardList";
+		} else {
+			return "users/loginFail";
+		}
+	}
+	
 	
 }

@@ -12,6 +12,8 @@
 <title>intro</title>
 </head>
 <body>
+
+
 	
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Board</a>
@@ -35,7 +37,9 @@
       </li>
      </ul>
      
-      <% if (userId != null) {  %> 
+      <%
+      
+      if (userId != null) {  %> 
       <a class="btn btn-outline-success my-2 my-sm-0" href="${path}/users/logout">로그아웃</a>
       <h1 class="text-success"><%=userId %>님 로그인중</h1>
       <%} else  { %>
